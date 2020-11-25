@@ -215,7 +215,6 @@ void play()
  gotoxy(x/2,y/2);
  getchar();
  gets(arr);
- getchar();
  cleardevice();
  sprintf(enter,"Hello %s Welcome to KBC",arr);
  outtextxy(x/2-200,10,enter);
