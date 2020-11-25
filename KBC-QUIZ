@@ -1,0 +1,2551 @@
+#include<stdio.h>
+#include<graphics.h>
+#include<conio.h>
+#include<dos.h>
+#include<string.h>
+#include<stdlib.h>
+int a=1,b=1,c=1,d=1,sum=0,q=0,t;
+char win[100];
+void answer();
+void fifty();
+void que();
+void lifeline();
+void timer(int);
+void basic();
+void help();
+void f();
+void BG();
+void page1();
+char* winning();
+void fifity();
+void X();
+void play();
+void page1()
+
+{
+  int x,y,z;
+  x=getmaxx();
+  y=getmaxy();
+  a=1;b=1;c=1;d=1;sum=0;q=0;
+  char arr[1000],enter[1000];
+ for(int i=0;i<10;i++)
+  {
+    setcolor(4);
+    circle(x/2,150,120+i);
+  }
+  settextstyle(1,0,9);
+  for(i=0;i<10;i++)
+  {
+    setcolor(i%16);
+    outtextxy(x/2 -80,100,"KBC");
+    delay(300);
+  }
+    setcolor(WHITE);
+   setfillstyle(SOLID_FILL,GREEN);
+    rectangle(x/2-45,y/2 +60,x/2+60,y/2+100);
+    floodfill(x/2 +30,y/2 +80,WHITE);
+    settextstyle(2,0,9);
+    setcolor(BLACK);
+     outtextxy(x/2-42,y/2+63,"1:Play");
+   for(i=0;i<=270;i+=270)
+   {   setcolor(WHITE);
+      setfillstyle(SOLID_FILL,GREEN);
+      rectangle(140+i,379,245+i,420);
+      floodfill(140+i+80,400,WHITE);
+   }
+   settextstyle(2,0,7);
+   setcolor(BLACK);
+   outtextxy(142,383,"2:Help");
+   outtextxy(412,383,"3:Score");
+   for(i=0;i<=150;i+=50)
+   {  setcolor(WHITE);
+     setfillstyle(SOLID_FILL,GREEN);
+     circle(500+i,20,20);
+     floodfill(500+i+5,25,WHITE);
+   }
+   settextstyle(2,0,15);
+   setcolor(BLACK);
+   outtextxy(495,0,"f");
+   settextstyle(2,0,8);
+   outtextxy(538,6,"BG");
+   outtextxy(596,8,"X");
+   tt:
+   scanf("%s",enter);
+   if(strcmp(enter,"1")==0)
+  {
+    cleardevice();
+    play();
+  }
+  else if(strcmp(enter,"f")==0)
+  {
+   f();
+    }
+    else if(strcmp(enter,"BG")==0||strcmp(enter,"bg")==0)
+    {
+       BG();
+      }
+    else if(strcmp(enter,"x")==0||strcmp(enter,"x")==0)
+    {
+       X();
+    }
+    else if(strcmp(enter,"2")==0)
+    {
+       help();
+       }
+    else{
+    goto tt;
+    }
+
+}
+void help()
+{
+  int x,y,z;
+  x=getmaxx();
+  y=getmaxy();
+ cleardevice();
+       settextstyle(2,0,8);
+       setcolor(5);
+       outtextxy(x/2-100,40,"Key to options");
+       outtextxy(50,80,"(A) 1 is for starting the game");
+       outtextxy(50,110,"(B) 2 is for opening help");
+       outtextxy(50,140,"(C) 3 is for showing the scores");
+       outtextxy(50,170,"(D) f for showing the creators");
+       outtextxy(50,200,"(E) BG for changing the background color");
+       outtextxy(50,230,"(F) x for exiting the program");
+       settextstyle(2,0,5);
+       outtextxy(x/2,400,"enter 0 to go to home screen");
+       scanf("%d",&z);
+       if(z==0)
+       {
+	 cleardevice();
+	 page1();
+       }
+}
+void f()
+{
+
+  int x,y,z;
+  char enter[100];
+  x=getmaxx();
+  y=getmaxy();
+  cleardevice();
+   setcolor(5);
+   settextstyle(2,0,15);
+    outtextxy(50,50,"1:Sahil Sharma");
+    outtextxy(50,80,"2:Harshit Handa");
+    settextstyle(2,0,5);
+    outtextxy(x/2,400,"!Press v for previous screen");
+    scanf("%s",enter);
+    if(strcmp(enter,"v")==0)
+    {
+      cleardevice();
+      page1();
+    }
+}
+void BG()
+{
+
+  int x,y,z;
+  x=getmaxx();
+  y=getmaxy();
+  cleardevice();
+      setcolor(5);
+      settextstyle(2,0,8);
+      outtextxy(x/2-100,40,"CHANGE COLOR OF BACKGROUND");
+      outtextxy(50,80,"1:Blue");
+      outtextxy(50,110,"2:White");
+      outtextxy(50,140,"3:Yellow");
+      outtextxy(50,170,"4:Cyan");
+      outtextxy(50,200,"5:Black");
+      settextstyle(2,0,5);
+      outtextxy(x/2,400,"enter 0 to go to home screen");
+      scanf("%d",&z);
+      if(z==1)
+      { cleardevice();
+	setbkcolor(BLUE);
+	page1();
+      }
+      else if(z==2)
+      {  cleardevice();
+	setbkcolor(WHITE);
+	page1();
+	}
+	else if(z==3)
+	{ cleardevice();
+	setbkcolor(YELLOW);
+	page1();
+	}
+	else if(z==4)
+	{    cleardevice();
+	setbkcolor(CYAN);
+	page1();
+	}
+	else if(z==5)
+	{    cleardevice();
+	setbkcolor(BLACK);
+	page1();
+	}
+	else if(z==0);
+	{  cleardevice();
+	  page1();
+	  }
+}
+void X()
+{
+int x,y,z;
+  x=getmaxx();
+  y=getmaxy();
+  cleardevice();
+       setcolor(YELLOW);
+       settextstyle(4,0,4);
+       outtextxy(x/2-200,y/2-100,"Thanks For playing the Game");
+       outtextxy(x/2-200,y/2,"!!!!!COME BACK SOON!!!!!");
+       delay(2000);
+       exit(0);
+}
+void play()
+{
+ int x,y,z;
+ char arr[1000],enter[1000];
+ x=getmaxx();
+ y=getmaxy();
+ setcolor(5);
+ settextstyle(2,0,5);
+ outtextxy(x/2-250,y/2,"Enter your name");
+ gotoxy(x/2,y/2);
+ getchar();
+ gets(arr);
+ getchar();
+ cleardevice();
+ sprintf(enter,"Hello %s Welcome to KBC",arr);
+ outtextxy(x/2-200,10,enter);
+ outtextxy(x/2,40,"Instructions");
+ outtextxy(50,80,"1:There are 15 questions in total");
+ outtextxy(50,110,"2:Each question has 4 options");
+ outtextxy(50,140,"3:Out of which only 1 is correct");
+ outtextxy(x/2,180,"Lifelines");
+ outtextxy(50,210,"#:There are 2 lifelines");
+ outtextxy(50,250,"1:50-50, which removes 2 wrong options");
+ outtextxy(50,270,"2:Skip the question");
+ outtextxy(50,450,"Press 0 for previous");
+ outtextxy(500,450,"Press 1 for next");
+ for(int i=0;!kbhit();i++)
+ {
+   setcolor(i%16);
+   settextstyle(2,0,5);
+   outtextxy(540,80,"15:  7 Crore");
+   outtextxy(540,100,"14:  5 Crore");
+   outtextxy(540,120,"13:  3 Crore");
+   outtextxy(540,140,"12:  1 Crore");
+   outtextxy(540,160,"11:  5000000");
+   outtextxy(540,180,"10:  2500000");
+   outtextxy(540,200," 9:  1250000");
+   outtextxy(540,220," 8:   640000");
+   outtextxy(540,240," 7:   320000");
+   outtextxy(540,260," 6:   160000");
+   outtextxy(540,280," 5:    80000");
+   outtextxy(540,300," 4:    40000");
+   outtextxy(540,320," 3:    20000");
+   outtextxy(540,340," 2:    10000");
+   outtextxy(540,360," 1:     5000");
+    delay(200);
+ }
+ scanf("%d",&z);
+ if(z==0)
+ {
+  cleardevice();
+  page1();
+ }
+ else if(z==1)
+ {
+  cleardevice();
+  setcolor(5);
+  settextstyle(5,0,4);
+  sprintf(arr,"%s","!!LETS PLAY!!");
+  outtextxy(x/2-70,y/2 -50,arr);
+  sprintf(arr,"%s","KAUN BANEGA CROREPATI");
+  outtextxy(x/2-200,y/2 +20,arr);
+  delay(3000);
+  basic();
+  }
+  }
+void basic()
+{
+int x,y,z;
+x=getmaxx();
+y=getmaxy();
+  cleardevice();
+   for(int i=0;i<10;i++)
+  {
+    setcolor(4);
+    circle(x/2,150,80+i);
+  }
+  settextstyle(1,0,8);
+    setcolor(2);
+    outtextxy(x/2 -70,100,"KBC");
+   setcolor(WHITE);
+   setfillstyle(SOLID_FILL,5);
+   rectangle(65,300,600,350);
+   floodfill(100,330,WHITE);
+   setcolor(2);
+   for(i=0;i<=45;i+=45)
+   {
+     for(int j=0;j<=330;j+=330)
+     fillellipse(170+j,375+i,105,20);
+   }
+   setcolor(WHITE);
+   setfillstyle(SOLID_FILL,GREEN);
+   circle(600,20,20);
+   floodfill(605,25,WHITE);
+   settextstyle(2,0,15);
+   setcolor(BLACK);
+   outtextxy(592,0,"X");
+   settextstyle(2,0,7);
+   setcolor(5);
+   outtextxy(400,5,"Press X to quit");
+   setcolor(WHITE);
+   circle(330,400,40);
+   for(i=0;i<=120;i+=120)
+   {
+     setcolor(WHITE);
+     circle(275+i,273,25);
+     setfillstyle(SOLID_FILL,RED);
+     floodfill(275+i+5,281,WHITE);
+
+     }
+     setcolor(RED);
+     settextstyle(2,0,5);
+     outtextxy(420,100,"Enter E for 50:50");
+     outtextxy(420,120,"Enter G for skip the question");
+   if(q==0)
+   que();
+   else
+   fifty();
+
+   }
+void timer(int s)
+{
+    int x,y,z;
+    char enter[1000];
+x=getmaxx();
+y=getmaxy();
+  char arr[1000];
+    while(!kbhit())
+    {
+    setfillstyle(SOLID_FILL,BLACK);
+    floodfill(310,380,WHITE);
+       setcolor(RED);
+       settextstyle(2,0,15);
+	sprintf(arr,"%d",s);
+     outtextxy(310,380,arr);
+	delay(1000);
+	s--;
+    if(s==0)
+   {
+     cleardevice();
+      settextstyle(2,0,8);
+      setcolor(5);
+      outtextxy(x/2 -100,y/2,"!!!TIME IS UP!!!");
+      delay(1000);
+      settextstyle(2,0,5);
+      sprintf(enter,"You won %s rupees",winning());
+      outtextxy(x/2-100,y/2+70,enter);
+      delay(2000);
+      cleardevice();
+      page1();
+    }
+    t=s;
+
+ }
+ scanf("%s",enter);
+ if(strcmp(enter,"x")==0||strcmp(enter,"x")==0)
+   {
+     cleardevice();
+     settextstyle(2,0,6);
+     outtextxy(x/2-100,y/2,"You Quit the game");
+     delay(1000);
+     outtextxy(x/2-200,y/2+50,"Going back to home screen");
+     delay(1000);
+     cleardevice();
+     page1();
+
+}
+}
+void que()
+{
+int x,y;
+char enter[1000];
+x=getmaxx();
+y=getmaxy();
+char comp[100];
+  setcolor(BLACK);
+  settextstyle(2,0,5);
+  gotoxy(50,50);
+if(a<16)
+{
+  switch(a)
+  {
+
+      case 1:{
+	     outtextxy(70,310,"What is the National game of England?");
+	     outtextxy(80,365,"A: Football");
+	     outtextxy(405,365,"B: Basketball");
+	     outtextxy(80,410,"C: Cricket");
+	     outtextxy(405,410,"D: Baseball");
+	     lifeline(); timer(59);g1:
+	     scanf("%s",comp);
+	     if(strcmp(comp,"C")==0||strcmp(comp,"c")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+             if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g1;
+}
+}
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+        if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g1;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+	     }
+	     case 2:{
+	     outtextxy(70,310,"Study of Earthquake is called............");
+	     outtextxy(80,365,"A: Seismology");
+	     outtextxy(405,365,"B: Cosmology");
+	     outtextxy(80,410,"C: Orology");
+	     outtextxy(405,410,"D: Etimology");
+	     lifeline(); timer(59);g2:
+	     scanf("%s",comp);
+	     if(strcmp(comp,"A")==0||strcmp(comp,"a")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g2;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g2;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+
+	     }
+	     case 3:{
+	     outtextxy(70,310,"Among the top 10 highest peaks in the world, how many lie in Nepal?");
+	     outtextxy(80,365,"A: 6");
+	     outtextxy(405,365,"B: 7");
+	     outtextxy(80,410,"C: 8");
+	     outtextxy(405,410,"D: 9");
+	     lifeline(); timer(59);g3:
+	     scanf("%s",comp);
+		     if(strcmp(comp,"C")==0||strcmp(comp,"c")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g3;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g3;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+}
+	     case 4:{
+	     outtextxy(70,310,"The Laws of Electromagnetic Induction were given by?");
+	     outtextxy(80,365,"A: Tesla");
+	     outtextxy(405,365,"B: Coulumb");
+	     outtextxy(80,410,"C: Faraday");
+	     outtextxy(405,410,"D: Maxwell");
+	     lifeline(); timer(59);g4:
+	     scanf("%s",comp);
+	if(strcmp(comp,"C")==0||strcmp(comp,"c")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g4;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g4;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+
+	     }
+	     case 5:{
+	     outtextxy(70,310,"Which element is found in Vitamin B12?");
+	     outtextxy(80,365,"A: Iron");
+	     outtextxy(405,365,"B: Cobalt");
+	     outtextxy(80,410,"C: Calcium");
+	     outtextxy(405,410,"D: compinc");
+	     lifeline(); timer(59);g5:
+	     scanf("%s",comp);
+if(strcmp(comp,"B")==0||strcmp(comp,"b")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g5;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g5;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+
+	     }case 6:{
+	     outtextxy(70,310,"What is the capital of Denmark?");
+	     outtextxy(80,365,"A: Copenhagen");
+	     outtextxy(405,365,"B: Ajax");
+	     outtextxy(80,410,"C: Helsinki");
+	     outtextxy(405,410,"D: Galatasaray");
+	     lifeline(); timer(59);g6:
+	     scanf("%s",comp);
+if(strcmp(comp,"A")==0||strcmp(comp,"a")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g6;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g6;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+
+	     }case 7:{
+	     outtextxy(70,310,"Which city is known at 'The City of Seven Hills'?");
+	     outtextxy(80,365,"A: Rome");
+	     outtextxy(405,365,"B: Vactican City");
+	     outtextxy(80,410,"C: Madrid");
+	     outtextxy(405,410,"D: Berlin");
+	     lifeline(); timer(59);g7:
+	     scanf("%s",comp);
+if(strcmp(comp,"A")==0||strcmp(comp,"a")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g7;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g7;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+
+	     }case 8:{
+	     outtextxy(70,310,"Name the country where there no mosquitoes are found?");
+	     outtextxy(80,365,"A: Japan");
+	     outtextxy(405,365,"B: Italy");
+	     outtextxy(80,410,"C: Argentina");
+	     outtextxy(405,410,"D: France");
+	     lifeline(); timer(59);g8:
+	     scanf("%s",comp);
+if(strcmp(comp,"D")==0||strcmp(comp,"d")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g8;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g8;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+
+	     }case 9:{
+	     outtextxy(70,310,"Who is the author of 'Pulpasa Cafe'?");
+	     outtextxy(80,365,"A: Narayan Wagle");
+	     outtextxy(405,365,"B: Lal Gopal Subedi");
+	     outtextxy(80,410,"C: B.P. Koirala");
+	     outtextxy(405,410,"D: D.Khagendra Sangraula");
+	     lifeline(); timer(59);g9:
+	     scanf("%s",comp);
+if(strcmp(comp,"A")==0||strcmp(comp,"a")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g9;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g9;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+
+	     }case 10:{
+	     outtextxy(70,310,"What is the unit of measurement of distance between Stars?");
+	     outtextxy(80,365,"A: Light Year");
+	     outtextxy(405,365,"B: Coulomb");
+	     outtextxy(80,410,"C: Nautical Mile");
+	     outtextxy(405,410,"D: Kilometer");
+	     lifeline(); timer(59);g10:
+	     scanf("%s",comp);
+if(strcmp(comp,"A")==0||strcmp(comp,"a")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g10;
+}
+	 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g10;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+
+	     }case 11:{
+	     outtextxy(70,310,"Wind speed is measured by__________?");
+	     outtextxy(80,365,"A: Lysimeter");
+	     outtextxy(405,365,"B: Air vane");
+	     outtextxy(80,410,"C: Hydrometer");
+	     outtextxy(405,410,"D: Anemometer");
+	     lifeline(); timer(59);g11:
+	     scanf("%s",comp);
+if(strcmp(comp,"D")==0||strcmp(comp,"d")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g11;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g11;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+
+	     }case 12:{
+	     outtextxy(70,310,"Which city in the world is popularly known as The City of Temple?");
+	     outtextxy(80,365,"A: Delhi");
+	     outtextxy(405,365,"B: Bhaktapur");
+	     outtextxy(80,410,"C: Kathmandu");
+	     outtextxy(405,410,"D: Agra");
+	     lifeline(); timer(59);g12:
+	     scanf("%s",comp);
+if(strcmp(comp,"C")==0||strcmp(comp,"c")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g12;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g12;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+		     }case 13:{
+	     outtextxy(70,310,"Which hardware was used in the First Generation Computer?");
+	     outtextxy(80,365,"A: Transistor");
+	     outtextxy(405,365,"B: Valves");
+	     outtextxy(80,410,"C: I.C");
+	     outtextxy(405,410,"D: S.S.I");
+	     lifeline(); timer(59);g13:
+	     scanf("%s",comp);
+if(strcmp(comp,"B")==0||strcmp(comp,"b")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g13;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g13;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+		     }
+	     case 14:{
+	     outtextxy(70,310,"Ocompone plate is being destroyed regularly because of____ ?");
+	     outtextxy(80,365,"A: L.P.G");
+	     outtextxy(405,365,"B: Nitrogen");
+	     outtextxy(80,410,"C: Methane");
+	     outtextxy(405,410,"D: C.F.C");
+	     lifeline(); timer(59);g14:
+	     scanf("%s",comp);
+if(strcmp(comp,"D")==0||strcmp(comp,"d")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g14;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g14;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+
+	  }case 15:{
+	     outtextxy(70,310,"Who won the Women's Australian Open Tennis in 2007?");
+	     outtextxy(80,365,"A: Martina Hingis");
+	     outtextxy(405,365,"B: Maria Sarapova");
+	     outtextxy(80,410,"C: Kim Clijster");
+	     outtextxy(405,410,"D: Serena Williams");
+	     lifeline(); timer(59);g15:
+	     scanf("%s",comp);
+if(strcmp(comp,"D")==0||strcmp(comp,"d")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+			if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g15;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g15;
+		}}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+
+	     }case 16:{
+	     outtextxy(70,310,"Which Blood Group is known as the Universal Recipient?");
+	     outtextxy(80,365,"A: A");
+	     outtextxy(405,365,"B: AB");
+	     outtextxy(80,410,"C: B");
+	     outtextxy(405,410,"D: O");
+	     lifeline(); timer(59);g16:
+	     scanf("%s",comp);
+if(strcmp(comp,"B")==0||strcmp(comp,"b")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	       sum++;
+	  a++;
+	  delay(1000);
+	  cleardevice();
+	  basic();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {if(b==1)
+              {
+			cleardevice();
+			q=1;
+			basic();
+			sum++;
+			a++;b--;
+			q=0;
+			basic();
+		 }
+            else
+            {
+              settextstyle(2,0,4);outtextxy(100,100,"Already taken");timer(t);
+              goto g16;
+}
+
+		 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+	{
+		if(c==1)
+        {
+		a++;
+		c--;
+		basic();
+         }
+       else
+        {
+           settextstyle(2,0,4);
+           outtextxy(100,100,"Already used");
+          timer(t);
+          goto g16;
+		}
+}
+         else if (strcmp(comp,"X")==0||strcmp(comp,"x")==0)
+        {
+            cleardevice();
+	    settextstyle(2,0,5);outtextxy(x/2,y/2,"You quitted the game");
+delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+        }
+
+		else
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer");
+			delay(2000);
+
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+
+		}
+	     break;
+
+	     }
+
+
+  }
+}
+else
+{
+    cleardevice();
+   settextstyle(2,0,7);
+   setcolor(YELLOW);
+  outtextxy(x/2-200,y/2,"You Are a Champion");
+  delay(1000);
+  outtextxy(x/2-200,y/2 +50,"Come back soon");
+  delay(2000);
+page1();
+ 
+  }
+  }
+void lifeline()
+{
+setcolor(BLACK);
+settextstyle(2,0,6);
+  if(b==1&&c==1)
+   {
+      outtextxy(254,266,"50:50");
+      outtextxy(376,266,"<<>>");
+   }
+  else if(b==1&&c!=1)
+  {
+      outtextxy(254,266,"50:50");
+      }
+
+      else if(b!=1 &&c==1)
+      {
+      outtextxy(376,266,"<<>>");
+
+      }
+
+  }
+ char* winning()
+ {
+	if(sum==0)
+	return "0";
+	else if(sum==1)
+	return "5000";
+	else if(sum==2)
+	return "10000";
+    else if(sum==3)
+	return "20000";
+	else if(sum==4)
+	return "40000";
+	else if(sum==5)
+	return "80000";
+	else if(sum==6)
+	return "160000";
+	else if(sum==7)
+	return "320000";
+	else if(sum==8)
+	return "640000";
+	else if(sum==9)
+	return "1250000";
+	else if(sum==10)
+	return "2500000";
+	else if(sum==11)
+	return "5000000";
+	else if(sum==12)
+	return "1 Crore";
+	else if(sum==13)
+	return "3 Crore";
+	else if(sum==14)
+	return "5 Crore";
+	else if(sum==15)
+	return "7 Crore";
+ }
+void fifty()
+{
+if(b==1)
+{
+int x,y;
+char enter[1000];
+x=getmaxx();
+y=getmaxy();
+char comp[100];
+  setcolor(BLACK);
+  settextstyle(2,0,6);
+  switch(a)
+  {
+
+      case 1:{
+	     outtextxy(70,310,"What is the National game of England?");
+
+
+	     outtextxy(80,410,"C: Cricket");
+	     outtextxy(405,410,"D: Baseball");
+	     lifeline(); a1:timer(t);
+	     scanf("%s",comp);
+	     if(strcmp(comp,"C")==0||strcmp(comp,"c")==0)
+	     {
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	  delay(1000);
+	  cleardevice();
+
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 { settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a1;
+					 }
+	else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a1;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+	     }
+	     case 2:{
+	     outtextxy(70,310,"Study of Earthquake is called............");
+	     outtextxy(80,365,"A: Seismology");
+	     	     
+	     outtextxy(405,410,"D: Etimology");
+	     lifeline(); a2:timer(t);
+	     scanf("%s",comp);
+	     if(strcmp(comp,"A")==0||strcmp(comp,"a")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+          delay(1000);
+          cleardevice();
+          
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+		 	settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a2;
+		 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a2;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+
+	     }
+	     case 3:{
+	     outtextxy(70,310,"Among the top 10 highest peaks in the world, how many lie in Nepal?");
+	    
+	     outtextxy(405,365,"B: 7");
+	     outtextxy(80,410,"C: 8");
+	    
+	     lifeline(); a3:timer(t);
+	     scanf("%s",comp);
+	     	     if(strcmp(comp,"C")==0||strcmp(comp,"c")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+
+          delay(1000);
+          cleardevice();
+          
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+		 	settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a3;
+		 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a3;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+}
+	     case 4:{
+	     outtextxy(70,310,"The Laws of Electromagnetic Induction were given by?");
+	     
+	     outtextxy(405,365,"B: Coulumb");
+	     outtextxy(80,410,"C: Faraday");
+	   
+	     lifeline(); a4:timer(t);
+	     scanf("%s",comp);
+	if(strcmp(comp,"C")==0||strcmp(comp,"c")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+
+          delay(1000);
+          cleardevice();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a4;
+		 			 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a4;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+
+	     }
+	     case 5:{
+	     outtextxy(70,310,"Which element is found in Vitamin B12?");
+	     
+	     outtextxy(405,365,"B: Cobalt");
+	     
+	     outtextxy(405,410,"D: compinc");
+	     lifeline(); a5:timer(t);
+	     scanf("%s",comp);
+if(strcmp(comp,"B")==0||strcmp(comp,"b")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+
+          delay(1000);
+          cleardevice();
+          
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+		 	settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a5;
+		 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a5;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+	     
+	     }case 6:{
+	     outtextxy(70,310,"What is the capital of Denmark?");
+	     outtextxy(80,365,"A: Copenhagen");
+	    
+	     outtextxy(80,410,"C: Helsinki");
+	     
+	     lifeline(); a6:timer(t);
+	     scanf("%s",comp);
+if(strcmp(comp,"A")==0||strcmp(comp,"a")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+
+          delay(1000);
+          cleardevice();
+          
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a6;
+		 			 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a6;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+
+	     }case 7:{
+	     outtextxy(70,310,"Which city is known at 'The City of Seven Hills'?");
+	     outtextxy(80,365,"A: Rome");
+	   
+	  
+	     outtextxy(405,410,"D: Berlin");
+	     lifeline(); a7:timer(t);
+	     scanf("%s",comp);
+if(strcmp(comp,"A")==0||strcmp(comp,"a")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+
+          delay(1000);
+          cleardevice();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a7;
+		 			 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a7;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+	  
+	     }case 8:{
+	     outtextxy(70,310,"Name the country where there no mosquitoes are found?");
+	    
+	  
+	     outtextxy(80,410,"C: Argentina");
+	     outtextxy(405,410,"D: France");
+	     lifeline(); a8:timer(t);
+	     scanf("%s",comp);
+if(strcmp(comp,"D")==0||strcmp(comp,"d")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+          delay(1000);
+          cleardevice();
+          
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+		 	settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a8;
+		 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a8;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+	     
+	     }case 9:{
+	     outtextxy(70,310,"Who is the author of 'Pulpasa Cafe'?");
+	     outtextxy(80,365,"A: Narayan Wagle");
+	     outtextxy(405,365,"B: Lal Gopal Subedi");
+		     lifeline(); a9:timer(t);
+	     scanf("%s",comp);
+if(strcmp(comp,"A")==0||strcmp(comp,"a")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+
+          delay(1000);
+          cleardevice();
+          
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+		 	settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a9;
+		 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a9;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+	     
+	     }case 10:{
+	     outtextxy(70,310,"What is the unit of measurement of distance between Stars?");
+	     outtextxy(80,365,"A: Light Year");
+	     	     outtextxy(405,410,"D: Kilometer");
+	     lifeline(); a10:timer(t);
+	     scanf("%s",comp);
+if(strcmp(comp,"A")==0||strcmp(comp,"a")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+
+          delay(1000);
+          cleardevice();
+          
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+		 	settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a10;
+		 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a10;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+	     
+	     }case 11:{
+	     outtextxy(70,310,"Wind speed is measured by__________?");
+
+	     
+	     outtextxy(80,410,"C: Hydrometer");
+	     outtextxy(405,410,"D: Anemometer");
+	     lifeline(); a11:timer(t);
+	     scanf("%s",comp);
+if(strcmp(comp,"D")==0||strcmp(comp,"d")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+          delay(1000);
+          cleardevice();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+		 	settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a11;
+		 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a11;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+	     
+	     }case 12:{
+	     outtextxy(70,310,"Which city in the world is popularly known as The City of Temple?");
+	     	     outtextxy(80,410,"C: Kathmandu");
+	     outtextxy(405,410,"D: Agra");
+	     lifeline(); a12:timer(t);
+	     scanf("%s",comp);
+if(strcmp(comp,"C")==0||strcmp(comp,"c")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+
+          delay(1000);
+          cleardevice();
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+		 	settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a12;
+		 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a12;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+	     	     }case 13:{
+	     outtextxy(70,310,"Which hardware was used in the First Generation Computer?");
+	     outtextxy(80,365,"A: Transistor");
+	     outtextxy(405,365,"B: Valves");
+		     lifeline(); a13:timer(t);
+	     scanf("%s",comp);
+if(strcmp(comp,"B")==0||strcmp(comp,"b")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+
+          delay(1000);
+          cleardevice();
+          
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+		 	settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a13;
+		 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a13;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+	     	     }
+	     case 14:{
+	     outtextxy(70,310,"Ocompone plate is being destroyed regularly because of____ ?");
+	     	     outtextxy(80,410,"C: Methane");
+	     outtextxy(405,410,"D: C.F.C");
+	     lifeline(); a14:timer(t);
+	     scanf("%s",comp);
+if(strcmp(comp,"D")==0||strcmp(comp,"d")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+	
+          delay(1000);
+          cleardevice();
+          
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+		 	settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a14;
+		 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a14;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+	     
+          }case 15:{
+	     outtextxy(70,310,"Who won the Women's Australian Open Tennis in 2007?");
+	     	     outtextxy(80,410,"C: Kim Clijster");
+	     outtextxy(405,410,"D: Serena Williams");
+	     lifeline(); a15:timer(t);
+	     scanf("%s",comp);
+if(strcmp(comp,"D")==0||strcmp(comp,"d")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+
+          delay(1000);
+          cleardevice();
+          
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {
+		 	settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a15;
+		 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {
+        	if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a15;
+		}
+		}
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+	     
+	     }case 16:{
+	     outtextxy(70,310,"Which Blood Group is known as the Universal Recipient?");
+	     outtextxy(80,365,"A: A");
+	     outtextxy(405,365,"B: AB");
+	     
+	     
+	     lifeline(); timer(t);
+           a16:
+	     scanf("%s",comp);
+if(strcmp(comp,"B")==0||strcmp(comp,"b")==0)
+	     { 
+	      cleardevice();
+	      settextstyle(2,0,8);
+	      setcolor(YELLOW);
+	       outtextxy(x/2,y/2,"!!CORRECT!!");
+
+          delay(1000);
+          cleardevice();
+          
+		 }
+		 else if(strcmp(comp,"E")==0||strcmp(comp,"e")==0)
+		 {settextstyle(2,0,4);outtextxy(50,50,"Not Allowed");goto a16;
+		 }
+        else if(strcmp(comp,"G")==0||strcmp(comp,"g")==0)
+        {  
+         if(c==1)
+         {
+        	a++;
+        	c--;
+           q=0;cleardevice();
+        	basic();
+         }
+          else
+         {
+          settextstyle(2,0,4);
+          outtextxy(50,70,"Already taken");
+          goto a16;
+		}
+        }
+		else 
+		{
+			cleardevice();
+			settextstyle(2,0,5);outtextxy(x/2,y/2,"Wrong answer"); 
+			delay(2000);
+			  
+			sprintf(enter,"You won %s rupees",  winning());
+			outtextxy(x/2,y/2+50,enter);
+			delay(3000);cleardevice();page1();
+			
+		}
+	     break;
+	     
+	     }
+
+}
+  }
+else
+{ 
+
+settextstyle(2,0,4);
+  outtextxy(100,100,"Already used");
+
+}
+}
+void main()
+{
+  int gd=DETECT,gm;
+  char data[1000];
+  initgraph(&gd,&gm,"C:\\TC\\BGI");
+  page1();
+  getch();
+  }
+
+
